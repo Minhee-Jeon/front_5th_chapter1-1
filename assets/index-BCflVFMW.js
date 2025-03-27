@@ -1,4 +1,4 @@
-(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))o(t);new MutationObserver(t=>{for(const n of t)if(n.type==="childList")for(const a of n.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&o(a)}).observe(document,{childList:!0,subtree:!0});function l(t){const n={};return t.integrity&&(n.integrity=t.integrity),t.referrerPolicy&&(n.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?n.credentials="include":t.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function o(t){if(t.ep)return;t.ep=!0;const n=l(t);fetch(t.href,n)}})();const r={isLoggedIn:localStorage.getItem("isLoggedIn")==="true",user:JSON.parse(localStorage.getItem("user")),subscribers:[],subscribe(e){this.subscribers.push(e)},setUserInfo(e){this.user=e,e?localStorage.setItem("user",JSON.stringify(e)):localStorage.removeItem("user"),this.notify()},setIsLoggedIn(e){this.isLoggedIn=e,localStorage.setItem("isLoggedIn",e),this.notify()},notify(){this.subscribers.forEach(e=>e())}},u=()=>{const e=document.createElement("div"),s=window.location.pathname,l=t=>t===s?"text-blue-600 font-bold":"text-gray-600",o=()=>{const t="/front_5th_chapter1-1";e.innerHTML=`
+(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))o(t);new MutationObserver(t=>{for(const n of t)if(n.type==="childList")for(const a of n.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&o(a)}).observe(document,{childList:!0,subtree:!0});function l(t){const n={};return t.integrity&&(n.integrity=t.integrity),t.referrerPolicy&&(n.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?n.credentials="include":t.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function o(t){if(t.ep)return;t.ep=!0;const n=l(t);fetch(t.href,n)}})();const r={isLoggedIn:localStorage.getItem("isLoggedIn")==="true"&&JSON.parse(localStorage.getItem("user")===void 0),user:JSON.parse(localStorage.getItem("user")),subscribers:[],subscribe(e){this.subscribers.push(e)},setUserInfo(e){this.user=e,e?localStorage.setItem("user",JSON.stringify(e)):localStorage.removeItem("user"),this.notify()},setIsLoggedIn(e){this.isLoggedIn=e,localStorage.setItem("isLoggedIn",e),this.notify()},notify(){this.subscribers.forEach(e=>e())}},u=()=>{const e=document.createElement("div"),s=window.location.pathname,l=t=>t===s?"text-blue-600 font-bold":"text-gray-600";return(()=>{const t="/front_5th_chapter1-1";e.innerHTML=`
       <header class="bg-blue-600 text-white p-4 sticky top-0">
         <h1 class="text-2xl font-bold">항해플러스</h1>
       </header>
@@ -14,7 +14,7 @@
               `}
           </ul>
       </nav>
-  `};return o(),r.subscribe(o),e},b=()=>`
+  `})(),e},b=()=>`
         <footer class="bg-gray-200 p-4 text-center">
             <p>&copy; 2024 항해플러스. All rights reserved.</p>
         </footer>
@@ -136,7 +136,7 @@
         </div>
       </div>
     </main>
-    `,e.querySelector("#login-form").addEventListener("submit",s=>{var o;s.preventDefault(),r.setIsLoggedIn(!0),r.setUserInfo({username:(o=e.querySelector("#username"))==null?void 0:o.value,email:"",bio:""}),window.history.pushState({},"","/front_5th_chapter1-1/"),r.notify(),i()}),e},p=()=>{if(!r.isLoggedIn){window.history.pushState({},"","/login");return}const e=document.createElement("div");e.classList.add("root");const s=()=>{var l,o,t;e.innerHTML=`
+    `,e.querySelector("#login-form").addEventListener("submit",s=>{var o;s.preventDefault(),r.setIsLoggedIn(!0),r.setUserInfo({username:(o=e.querySelector("#username"))==null?void 0:o.value,email:"",bio:""}),window.history.pushState({},"","/front_5th_chapter1-1/"),r.notify(),i()}),e},p=e=>{if(!r.isLoggedIn){e?window.history.pushState({},"","/login"):window.location.hash="#/login";return}const s=document.createElement("div");return s.classList.add("root"),(()=>{var o,t,n;s.innerHTML=`
     <div class="bg-gray-100 min-h-screen flex justify-center">
       <div class="max-w-md w-full">
         ${u().outerHTML}
@@ -157,7 +157,7 @@
                   id="username"
                   name="username"
                   placeholder="홍길동"
-                  value="${(l=r.user)==null?void 0:l.username}"
+                  value="${(o=r.user)==null?void 0:o.username}"
                   class="w-full p-2 border rounded"
                 />
               </div>
@@ -172,7 +172,7 @@
                   id="email"
                   name="email"
                   placeholder="hong@example.com"
-                  value="${(o=r.user)==null?void 0:o.email}"
+                  value="${(t=r.user)==null?void 0:t.email}"
                   class="w-full p-2 border rounded"
                 />
               </div>
@@ -189,7 +189,7 @@
                   placeholder="안녕하세요, 항해플러스에서 열심히 공부하고 있는 홍길동입니다."
                   class="w-full p-2 border rounded"
                 >
-${(t=r.user)==null?void 0:t.bio}</textarea
+${(n=r.user)==null?void 0:n.bio}</textarea
                 >
               </div>
               <button
@@ -205,7 +205,7 @@ ${(t=r.user)==null?void 0:t.bio}</textarea
         ${b()}
       </div>
     </div>
-    `};return s(),r.subscribe(s),e},c=()=>`
+    `})(),s},c=()=>`
         <main class="bg-gray-100 flex items-center justify-center min-h-screen">
             <div class="bg-white p-8 rounded-lg shadow-md w-full text-center" style="max-width: 480px">
             <h1 class="text-2xl font-bold text-blue-600 mb-4">항해플러스</h1>
@@ -219,4 +219,4 @@ ${(t=r.user)==null?void 0:t.bio}</textarea
             </a>
             </div>
         </main>
-    `,d="/front_5th_chapter1-1",g={[`${d}/`]:m,[`${d}/login`]:f,[`${d}/profile`]:p},i=e=>{const s=typeof e>"u"||typeof e=="object",l=s?window.location.pathname:e==null?void 0:e.toString().slice(1),o=document.body.querySelector("#root");if(!o){console.error("Root not found");return}const t=g[l];if(!t){o.innerHTML=c();return}if(l==="/login"&&r.isLoggedIn){s?window.history.pushState({},"","/"):window.location.hash="#/",i();return}if(l==="/profile"&&!r.isLoggedIn){s?window.history.pushState({},"","/login"):window.location.hash="#/login",i();return}o.innerHTML="",o.appendChild((t==null?void 0:t())||c())};window.addEventListener("popstate",i);const h=()=>{i()};h();window.addEventListener("click",e=>{e.target.id==="logout"&&(r.setIsLoggedIn(!1),r.setUserInfo(null),r.notify(),i())});window.addEventListener("submit",e=>{var s,l,o;e.target.id==="profile-form"&&(r.setUserInfo({username:(s=document.querySelector("#username"))==null?void 0:s.value,email:(l=document.querySelector("#email"))==null?void 0:l.value,bio:(o=document.querySelector("#bio"))==null?void 0:o.value}),r.notify())});window.addEventListener("hashchange",()=>{var s;const e=(s=window.location.hash)==null?void 0:s.toString();i(e)});
+    `,d="/front_5th_chapter1-1",g={[`${d}/`]:m,[`${d}/login`]:f,[`${d}/profile`]:p},i=e=>{const s=typeof e>"u"||typeof e=="object",l=s?window.location.pathname:e==null?void 0:e.toString().slice(1),o=document.body.querySelector("#root");if(!o){console.error("Root not found");return}const t=g[l];if(!t){o.innerHTML=c();return}if(l==="/login"&&r.isLoggedIn){s?(window.history.pushState({},"","/"),i()):(window.location.hash="#/",i("#/"));return}if(l==="/profile"&&!r.isLoggedIn){s?(window.history.pushState({},"","/login"),i()):(window.location.hash="#/login",i("#/login"));return}o.innerHTML="",o.appendChild((t==null?void 0:t(s))||c())};window.addEventListener("popstate",i);const h=()=>{i()};h();window.addEventListener("click",e=>{e.target.id==="logout"&&(r.setIsLoggedIn(!1),r.setUserInfo(null),r.notify(),i())});window.addEventListener("submit",e=>{var s,l,o;e.target.id==="profile-form"&&(r.setUserInfo({username:(s=document.querySelector("#username"))==null?void 0:s.value,email:(l=document.querySelector("#email"))==null?void 0:l.value,bio:(o=document.querySelector("#bio"))==null?void 0:o.value}),r.notify())});window.addEventListener("hashchange",()=>{var s;const e=(s=window.location.hash)==null?void 0:s.toString();i(e)});
